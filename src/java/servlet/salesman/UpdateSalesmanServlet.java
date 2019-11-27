@@ -2,8 +2,7 @@ package servlet.salesman;
 
 import entities.Salesman;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,26 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import service.SalesmanService;
 
-@WebServlet(name = "ListSalesmanServlet", urlPatterns = {"/listSalesman"})
-public class ListSalesmanServlet extends HttpServlet {
-
+@WebServlet(name = "UpdateSalesmanServlet", urlPatterns = {"/salesman/update"})
+public class UpdateSalesmanServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String id = request.getParameter("id");
         SalesmanService service = new SalesmanService();
-        List<Salesman> listOfSalesman = service.getSalesmen();
-        request.setAttribute("listOfSalesman", listOfSalesman);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/salesman/listSalesman.jsp");
+        Salesman s = service.getSalesman(id);
+        request.setAttribute("salesman", s);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/salesman/formSalesman2.jsp");
         dispatcher.forward(request, response);
+        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        response.sendRedirect(request.getContextPath()+"/listSalesman");
+        Map<String, String[]> map = request.getParameterMap();
+        SalesmanService service = new SalesmanService();
+        service.updateSalesman(map);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/listSalesman");
+        dispatcher.forward(request, response);
     }
 
-    
 }

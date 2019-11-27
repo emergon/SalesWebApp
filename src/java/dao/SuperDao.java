@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SuperDao{
-    private final String URL = "jdbc:mysql://localhost:3306/sales2?serverTimezone=UTC";
+    private final String URL = "jdbc:mysql://localhost:3306/sales?serverTimezone=UTC";
     private final String USER = "root";
     private final String PASS = "1234";
     private Connection conn;

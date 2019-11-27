@@ -17,6 +17,7 @@
         <p>
             <a href="${pageContext.request.getContextPath()}/salesman/create">New Salesman</a>
         </p>
+        <p>${message}</p>
         <table border="1">
             <tr>
                 <th>Scode</th>
