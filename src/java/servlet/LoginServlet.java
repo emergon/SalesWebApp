@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/login"},
         initParams = {
@@ -30,6 +31,8 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         boolean isLogin = username.equals("root") && password.equals("1234");
         if(isLogin==true){
+            HttpSession session = request.getSession();
+            session.setAttribute("username", username);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
         }else{
