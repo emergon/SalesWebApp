@@ -30,10 +30,12 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         boolean isLogin = username.equals("root") && password.equals("1234");
         if(isLogin==true){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.html");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
             dispatcher.forward(request, response);
         }else{
             response.getWriter().print("<div align='center'>Login failed</div>");
+            request.setAttribute("username", getInitParameter("username"));
+            request.setAttribute("password", getInitParameter("password"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
             dispatcher.include(request, response);
         }

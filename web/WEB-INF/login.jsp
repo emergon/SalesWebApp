@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +14,13 @@
     </head>
     <body>
         <div align="center">
+            <c:if test="${username != null}">
+                <ul>
+                    <li>Username:${username}</li>
+                    <li>Password:${password}</li>
+                </ul>
+            </c:if>
+            <br/>
             <form action="${pageContext.request.getContextPath()}/login" method="post">
                 <table>
                     <tr>
