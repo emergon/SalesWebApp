@@ -27,5 +27,9 @@
         <error-code>404</error-code>
         <location>/error404.jsp</location>
     </error-page>
+    <context-param>
+        <param-name>country</param-name>
+        <param-value>Greece</param-value>
+    </context-param>
         
 </web-app>

@@ -6,6 +6,8 @@
         <title>Edit Salesman</title>
     </head>
     <body>
+        <jsp:include page="/header.jsp"/>
+        
         <h1>Edit Salesman</h1>
         <form action="${pageContext.request.getContextPath()}/salesman/update" method="post">
             Scode:<input type="text" name="scode" value="${salesman.scode}" readonly>
@@ -18,5 +20,6 @@
             <br/>
             <input type="submit" value="Save">
         </form>
+            <%@include file="/footer.jsp" %>
     </body>
 </html>

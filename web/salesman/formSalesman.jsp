@@ -6,6 +6,8 @@
         <title>Create Salesman</title>
     </head>
     <body>
+        <jsp:include page="/header.jsp"/>
+        
         <h1>New Salesman</h1>
         <form action="${pageContext.request.getContextPath()}/salesman/create" method="post">
             Name: <input type="text" name="name">
@@ -16,5 +18,6 @@
             <br/>
             <input type="submit" value="Save">
         </form>
+            <%@include file="/footer.jsp" %>
     </body>
 </html>

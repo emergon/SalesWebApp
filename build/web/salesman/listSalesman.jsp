@@ -13,6 +13,7 @@
         <title>List Salesman</title>
     </head>
     <body>
+        <jsp:include page="/header.jsp"/>
         <h1>List of Salesmen</h1>
         <p>
             <a href="${pageContext.request.getContextPath()}/salesman/create">New Salesman</a>
@@ -42,5 +43,6 @@
                 </tr>
             </c:forEach>
         </table>
+        <%@include file="/footer.jsp" %>
     </body>
 </html>
