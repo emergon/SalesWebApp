@@ -34,6 +34,9 @@
                     <td>${salesman.city}</td>
                     <td>${salesman.commission}</td>
                     <td>
+                        <a href="${pageContext.request.getContextPath()}/salesman/view?id=${salesman.scode}">Details</a>
+                    </td>
+                    <td>
                         <a href="${pageContext.request.getContextPath()}/salesman/update?id=${salesman.scode}">Update</a>
                     </td>
                     <td>

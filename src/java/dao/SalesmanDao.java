@@ -1,11 +1,12 @@
 package dao;
 
-import entities.Salesman;
+import entities.Family;
 import entities.Salesman;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,7 +19,8 @@ public class SalesmanDao extends SuperDao implements InterfaceDao<Salesman> {
     private static final String INSERTSALESMAN = "INSERT INTO salesman (sname, scity, scomm) VALUES (?,?,?)";
     private static final String DELETESALESMAN = "DELETE FROM salesman WHERE scode = ?";
     private static final String UPDATESALESMAN = "UPDATE salesman SET sname = ?, scity = ?, scomm = ? WHERE scode = ?";
-
+    private static final String FINDFAMILYBYSALESMAN = "SELECT * FROM family WHERE salesman = ?";
+    
     @Override
     public boolean create(Salesman s) {
         PreparedStatement pst = null;
@@ -128,4 +130,44 @@ public class SalesmanDao extends SuperDao implements InterfaceDao<Salesman> {
         return deleted;
     }
 
+    public List<Family> getFamilyBySalesman(int id){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        List<Family> list = new ArrayList();
+        try {
+            pst = getConnection().prepareStatement(FINDFAMILYBYSALESMAN);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                int fid = rs.getInt(1);
+                String fname = rs.getString(2);
+                String frelation = rs.getString(3);
+                LocalDate dob = rs.getDate(4).toLocalDate();
+                Family f = new Family(fid, fname, frelation, dob);
+                list.add(f);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SalesmanDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            closeConnections(rs, pst);
+        }
+        return list;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

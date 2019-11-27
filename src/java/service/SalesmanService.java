@@ -1,6 +1,7 @@
 package service;
 
 import dao.SalesmanDao;
+import entities.Family;
 import entities.Salesman;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +50,12 @@ public class SalesmanService {
         //Pass object to DB
         boolean result = sdao.update(s);
         return result;
+    }
+
+    public List<Family> getFamilyBySalesman(String scode) {
+        int code = Integer.parseInt(scode);
+        List<Family> family = sdao.getFamilyBySalesman(code);
+        return family;
     }
     
 }

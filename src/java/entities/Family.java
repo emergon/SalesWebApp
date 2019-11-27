@@ -13,6 +13,13 @@ public class Family {
     public Family() {
     }
 
+    public Family(int fid, String fname, String frelationship, LocalDate dob) {
+        this.fid = fid;
+        this.fname = fname;
+        this.frelationship = frelationship;
+        this.dob = dob;
+    }
+
     public Family(String fname, String frelationship, LocalDate dob, Salesman salesman) {
         this.fname = fname;
         this.frelationship = frelationship;

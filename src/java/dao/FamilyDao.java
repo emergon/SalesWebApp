@@ -17,6 +17,7 @@ public class FamilyDao extends SuperDao implements InterfaceDao<Family> {
     private static final String FINDALL = "SELECT * FROM family";
     private static final String FINDBYID = "SELECT * FROM family WHERE fid = ?";
     private static final String INSERTFAMILY = "INSERT INTO family (fname, frelationship, dob, salesman) VALUES (?,?,?,?)";
+    private static final String DELETEFAMILY = "";
     
     @Override
     public boolean create(Family f) {

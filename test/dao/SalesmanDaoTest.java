@@ -1,5 +1,6 @@
 package dao;
 
+import entities.Family;
 import entities.Salesman;
 import java.util.List;
 import org.junit.After;
@@ -72,6 +73,20 @@ public class SalesmanDaoTest {
      */
     @Test
     public void testDelete() {
+    }
+    
+    @Test
+    public void testGetFamilyBySalesman(){
+        int id = 101;
+        List<Family> family = sdao.getFamilyBySalesman(id);
+        assertTrue(family.size()>0);
+    }
+    
+    @Test
+    public void testGetFamilyBySalesmanFail(){
+        int id = 102;
+        List<Family> family = sdao.getFamilyBySalesman(id);
+        assertTrue(family.isEmpty());
     }
     
 }

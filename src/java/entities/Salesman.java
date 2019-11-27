@@ -7,7 +7,7 @@ public class Salesman {
     private String name;
     private String city;
     private double commission;
-
+    
     public Salesman() {
     }
 
